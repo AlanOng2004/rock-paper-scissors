@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let humanScore = 0;
+        let computerScore = 0;
+        let computerChoice;
+        let humanChoice;
+
+        console.log("Hello World");
+
+        function getComputerChoice() {
+
+            let ComputerRandom = getRandomInt(3);
+
+            switch (ComputerRandom) {
+                case 0:
+                    computerChoice = "ROCK";
+                    break;
+                case 1:
+                    computerChoice = "PAPER";
+                    break;
+                case 2:
+                    computerChoice = "SCISSORS";
+                    break;
+                default:
+                    alert("Fucked up");
+            }
+            return computerChoice;
+        }
+
+        function getHumanChoice() {
+            let result = window.prompt("Choose one: Rock, Paper or Scissors: ");
+
+            humanChoice = result.toLowerCase();
+
+            if (humanChoice == "rock" || humanChoice == "paper" || humanChoice == "scissors") {
+                return humanChoice;
+            }
+            else {
+                getHumanChoice();
+            }
+        }
+
+        function getRandomInt(max) {
+            return Math.floor(Math.random() * max);
+        }
+
+        function playRound(human, computer) {
+            computerChoice = computerChoice.toLowerCase();
+            if (humanChoice == "rock" & computerChoice == "paper" || humanChoice == "paper" & computerChoice == "scissors" || humanChoice == "scissors" & computerChoice == "rock") {
+                console.log("You lose! Paper beats Rock");
+                computerScore++;
+            }
+            else if (humanChoice == computerChoice)
+            {
+                console.log("Draw!");
+            }
+            else {
+                console.log("You Win!");
+                humanScore++;
+            }
+        }
+
+        function playGame() {
+            
+            for (let i = 0; i < 5; i++) {
+                playRound(humanChoice, computerChoice);
+            }
+            console.log(humanScore);
+            console.log(computerScore);
+        }
+
+        getComputerChoice();
+        getHumanChoice();;
+
+        console.log(computerChoice);
+        console.log(humanChoice);
+
+        playGame();
+
+    </script>
+</body>
+
+</html>
